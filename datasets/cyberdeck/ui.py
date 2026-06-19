@@ -258,6 +258,22 @@ h2, h3 {
     color: #DDEBFF;
 }
 
+.creator-signature {
+    margin-top: 24px;
+    padding: 12px 14px;
+    border-top: 1px solid rgba(34, 211, 238, 0.26);
+    color: #9FB5D8;
+    font-family: "Courier New", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0;
+    text-align: right;
+}
+
+.creator-signature strong {
+    color: #FDE68A;
+    text-shadow: 0 0 14px rgba(253, 230, 138, 0.42);
+}
+
 div[data-testid="stDataFrame"], div[data-testid="stTable"] {
     border: 1px solid rgba(34, 211, 238, 0.16);
     border-radius: 8px;

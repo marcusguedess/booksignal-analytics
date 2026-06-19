@@ -2,6 +2,8 @@
 
 ![Banner pixel art neon do Cyberdeck Retro](assets/readme-banner.svg)
 
+Projeto autoral criado e assinado por **Marcus Guedes**.
+
 Projeto desenvolvido **for fun** para explorar dados de livros e reviews em um painel visual inspirado em cyberdecks, arcade retrofuturista e Night City.
 
 A ideia original era evoluir para um revisor/analista de reviews de livros com dados atualizados em tempo real. Como a prioridade atual é manter o projeto gratuito, seguro e sem gasto com tokens ou APIs pagas, esta versão trabalha com CSVs locais, upload manual de dados e amostras públicas anonimizadas.
@@ -100,6 +102,7 @@ O design prioriza:
 │   ├── sample_reviews.csv
 │   └── README.md
 ├── .gitignore
+├── LICENSE
 ├── requirements.txt
 └── README.md
 ```
@@ -181,6 +184,12 @@ Esta versão foi pensada para custo zero:
 - roda localmente com Streamlit, Pandas e Plotly.
 
 Para dados mais atuais, o caminho recomendado é usar CSVs próprios, datasets públicos permitidos ou, futuramente, integrações oficiais quando houver credenciais e autorização adequadas.
+
+## Autoria e licença
+
+Este projeto é autoral de **Marcus Guedes**.
+
+O código está público para visualização, estudo e teste do projeto, mas não está liberado como licença open-source permissiva. Todos os direitos estão reservados, salvo autorização expressa do autor.
 
 ## Próximos passos
 

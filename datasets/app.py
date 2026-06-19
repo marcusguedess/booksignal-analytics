@@ -427,3 +427,12 @@ st.caption(
     "Cyberdeck Retro é experimental e gratuito. Use dados públicos permitidos, CSVs próprios "
     "ou integrações oficiais autorizadas em versões futuras."
 )
+
+st.markdown(
+    """
+    <div class="creator-signature">
+        Projeto autoral de <strong>Marcus Guedes</strong> · todos os direitos reservados
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
