@@ -8,24 +8,49 @@ Por segurança e privacidade, os CSVs brutos não são versionados por padrão. 
 
 ## Status
 
-Em desenvolvimento.
+Em desenvolvimento, mas já funcional para testes públicos.
 
-Esta é uma versão revisada do protótipo inicial. O app já pode ser clonado e executado por qualquer pessoa usando os dados de exemplo, mas ainda há melhorias planejadas para futuras integrações oficiais e análises mais profundas.
+A versão atual inclui UI revisada, upload de CSV, dados de exemplo, score local de confiança, radar de compra, comparador de livros e exportação segura dos resultados filtrados.
 
-## O que o projeto faz
+## Funcionalidades
 
-- Carrega dados de livros e reviews a partir de arquivos CSV.
-- Permite upload de CSV direto pela interface.
-- Usa dados locais quando existirem.
-- Usa amostras públicas anonimizadas quando os CSVs reais não estiverem disponíveis.
-- Permite filtrar livros por gênero, título, preço máximo e avaliação mínima.
-- Permite visualizar apenas reviews verificadas.
-- Exibe métricas gerais sobre livros, avaliações e reviews.
-- Gera gráficos interativos com Plotly.
-- Mostra livros em destaque, reviews recentes e livros mais comentados.
-- Sinaliza reviews potencialmente frágeis com uma heurística local simples.
-- Permite baixar os livros e reviews filtrados.
-- Exibe um console visual do projeto com status da fonte de dados.
+- Upload de CSVs de livros e reviews direto pela interface.
+- Fallback automático para CSV local ou amostras públicas anonimizadas.
+- Filtros por gênero, título, preço máximo e nota mínima.
+- Filtro de reviews verificadas.
+- Filtro de reviews que merecem revisão manual.
+- Score local de confiança das reviews.
+- Radar de compra com destaques automáticos.
+- Comparador de até 4 livros.
+- Gráficos interativos com Plotly.
+- Exportação de CSVs filtrados.
+- Proteção simples contra CSV formula injection nos arquivos exportados.
+- Interface cyberpunk com foco em leitura rápida e navegação fácil.
+
+## Score de confiança
+
+O score de confiança é uma heurística local, sem IA paga e sem consumo de tokens.
+
+Ele reduz pontos quando uma review apresenta sinais como:
+
+- review não verificada;
+- texto muito curto;
+- título genérico;
+- nota extrema combinada com ausência de verificação;
+- pontuação repetida em excesso.
+
+O score não é uma detecção definitiva de fraude. Ele serve para priorizar revisão humana.
+
+## Radar de compra
+
+O radar destaca automaticamente:
+
+- melhor custo-benefício;
+- livro mais confiável;
+- livro mais comentado;
+- livro mais controverso.
+
+Esses destaques usam preço, nota, volume de reviews, percentual de reviews verificadas e score médio de confiança.
 
 ## Escolha de design
 
@@ -39,7 +64,7 @@ O design prioriza:
 - filtros claros;
 - métricas visíveis logo no topo;
 - gráficos com cores fortes;
-- ações diretas para upload e download;
+- ações diretas para upload, comparação e download;
 - visual cyberpunk sem tornar a interface confusa.
 
 ## Tecnologias
@@ -53,8 +78,15 @@ O design prioriza:
 
 ```text
 .
+├── .streamlit/
+│   └── config.toml
 ├── datasets/
 │   ├── app.py
+│   ├── cyberdeck/
+│   │   ├── __init__.py
+│   │   ├── analysis.py
+│   │   ├── data_loader.py
+│   │   └── ui.py
 │   ├── sample_books.csv
 │   ├── sample_reviews.csv
 │   └── README.md
@@ -66,11 +98,6 @@ O design prioriza:
 ## Como rodar localmente
 
 O projeto já inclui dados de exemplo anonimizados, então pode ser executado logo após a instalação.
-
-Para usar a base completa local, coloque os arquivos CSV brutos dentro da pasta `datasets/`:
-
-- `Top-100 Trending Books.csv`
-- `customer reviews.csv`
 
 Instale as dependências:
 
@@ -88,17 +115,49 @@ Depois de abrir o app, você pode:
 
 - usar os dados de exemplo;
 - enviar seus próprios CSVs pela barra lateral;
+- comparar livros;
 - baixar os resultados filtrados;
 - trocar filtros sem depender de qualquer API externa.
+
+## Testes
+
+Execute os testes locais das heurísticas com:
+
+```bash
+python -m unittest discover -s tests -p "test_*.py"
+```
+
+## Usando dados locais completos
+
+Para usar uma base local completa, coloque estes arquivos dentro da pasta `datasets/`:
+
+- `Top-100 Trending Books.csv`
+- `customer reviews.csv`
+
+Esses arquivos estão no `.gitignore` e não devem ser publicados no GitHub.
+
+## Deploy gratuito
+
+O projeto está preparado para Streamlit Community Cloud.
+
+Configuração sugerida:
+
+- Repositório: `marcusguedess/projeto_retro`
+- Branch: `main`
+- Main file path: `datasets/app.py`
+
+Não é necessário cadastrar secrets para a versão pública com samples.
 
 ## Segurança e dados
 
 - Não há chaves de API, tokens ou credenciais no código.
 - Arquivos `.env`, logs, cache Python e `secrets.toml` estão ignorados no Git.
-- Os CSVs brutos estão ignorados para evitar publicar dados de terceiros ou conteúdo pessoal de reviews.
-- Amostras anonimizadas foram incluídas para permitir testes públicos do projeto.
+- CSVs brutos estão ignorados para evitar publicar dados de terceiros ou conteúdo pessoal de reviews.
+- Amostras anonimizadas permitem testes públicos sem expor dados reais.
+- Uploads são limitados a 50 MB pela configuração do Streamlit.
 - A busca por título é tratada como texto literal, não como expressão regular.
-- O HTML permitido via `unsafe_allow_html=True` é usado apenas com conteúdo estático do próprio app.
+- O HTML permitido via `unsafe_allow_html=True` é usado apenas com conteúdo estático ou valores controlados pelo app.
+- Exportações CSV neutralizam células iniciadas por `=`, `+`, `-` ou `@`.
 
 ## Custo
 
@@ -114,14 +173,13 @@ Para dados mais atuais, o caminho recomendado é usar CSVs próprios, datasets p
 
 ## Próximos passos
 
-- Integrar uma fonte de dados atualizada em tempo real.
-- Melhorar a organização do código e separar responsabilidades.
-- Refinar as análises de reviews.
-- Adicionar tratamento de erros para arquivos ausentes ou dados incompletos.
-- Evoluir a experiência visual mantendo a identidade cyberpunk.
-- Criar conectores seguros para fontes públicas ou oficiais.
-- Adicionar mais heurísticas locais para qualidade de reviews.
+- Adicionar testes automatizados para as heurísticas.
+- Criar conectores seguros para fontes públicas permitidas.
+- Melhorar o modelo local de score com mais sinais estatísticos.
+- Adicionar busca textual nas reviews.
+- Adicionar versão em inglês.
+- Criar screenshots oficiais para o README após o deploy.
 
 ## Observação
 
-Este projeto ainda está em conclusão e foi criado como experimento pessoal. A versão atual é um protótipo funcional para testes e validação da ideia.
+Este projeto ainda está em conclusão e foi criado como experimento pessoal. A versão atual é um protótipo funcional para testes, demonstração de UI e validação da ideia.

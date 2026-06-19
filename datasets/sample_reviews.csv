@@ -1,6 +1,25 @@
 Sno,book name,review title,reviewer,reviewer rating,review description,is_verified,date,timestamp,ASIN
-1,Neon Pages,Great cyberpunk atmosphere,Anonymous Reviewer 1,5,Fun read with a strong retrofuturistic tone.,TRUE,01-01-2026,Reviewed in the United States January 1 2026,SAMPLE001
-2,Neon Pages,Stylish and quick,Anonymous Reviewer 2,4,The concept is engaging and the pacing is light.,TRUE,02-01-2026,Reviewed in the United States January 2 2026,SAMPLE001
-3,Midnight Library Logs,Interesting mystery,Anonymous Reviewer 3,4,A compact story with good mood and clean writing.,FALSE,03-01-2026,Reviewed in the United States January 3 2026,SAMPLE002
-4,Code and Coffee,Useful and clear,Anonymous Reviewer 4,5,Good examples and practical explanations.,TRUE,04-01-2026,Reviewed in the United States January 4 2026,SAMPLE003
-5,Retro Future Notes,Strong visual references,Anonymous Reviewer 5,4,The design discussion is concise and memorable.,TRUE,05-01-2026,Reviewed in the United States January 5 2026,SAMPLE004
+1,Neon Pages,Great cyberpunk atmosphere,Anonymous Reviewer 1,5,Fun read with a strong retrofuturistic tone and a clean sense of momentum.,TRUE,01-01-2026,Reviewed in the United States January 1 2026,SAMPLE001
+2,Neon Pages,Stylish and quick,Anonymous Reviewer 2,4,The concept is engaging and the pacing is light enough for a weekend read.,TRUE,02-01-2026,Reviewed in the United States January 2 2026,SAMPLE001
+3,Neon Pages,Wow,Anonymous Reviewer 3,5,Amazing.,FALSE,03-01-2026,Reviewed in the United States January 3 2026,SAMPLE001
+4,Midnight Library Logs,Interesting mystery,Anonymous Reviewer 4,4,A compact story with good mood clean writing and enough tension to keep reading.,FALSE,04-01-2026,Reviewed in the United States January 4 2026,SAMPLE002
+5,Midnight Library Logs,Good,Anonymous Reviewer 5,5,Good book.,FALSE,05-01-2026,Reviewed in the United States January 5 2026,SAMPLE002
+6,Code and Coffee,Useful and clear,Anonymous Reviewer 6,5,Good examples and practical explanations for readers who like technical books without heavy jargon.,TRUE,06-01-2026,Reviewed in the United States January 6 2026,SAMPLE003
+7,Code and Coffee,Practical,Anonymous Reviewer 7,5,The chapters are direct and each idea connects to a concrete workflow.,TRUE,07-01-2026,Reviewed in the United States January 7 2026,SAMPLE003
+8,Retro Future Notes,Strong visual references,Anonymous Reviewer 8,4,The design discussion is concise memorable and easy to apply to interface projects.,TRUE,08-01-2026,Reviewed in the United States January 8 2026,SAMPLE004
+9,Retro Future Notes,Too short,Anonymous Reviewer 9,3,I liked the tone but expected more examples and deeper case studies.,TRUE,09-01-2026,Reviewed in the United States January 9 2026,SAMPLE004
+10,The Last Bookmark,Quiet and emotional,Anonymous Reviewer 10,4,Slow at first but the final chapters make the small details feel worthwhile.,TRUE,10-01-2026,Reviewed in the United States January 10 2026,SAMPLE005
+11,The Last Bookmark,Ok,Anonymous Reviewer 11,2,Not for me.,FALSE,11-01-2026,Reviewed in the United States January 11 2026,SAMPLE005
+12,Signal Through Paper,Smart premise,Anonymous Reviewer 12,5,The book mixes mystery and speculative ideas with a surprisingly human emotional core.,TRUE,12-01-2026,Reviewed in the United States January 12 2026,SAMPLE006
+13,Signal Through Paper,Recommended,Anonymous Reviewer 13,5,Recommended.,FALSE,13-01-2026,Reviewed in the United States January 13 2026,SAMPLE006
+14,Data Ghosts,Uneven but fun,Anonymous Reviewer 14,3,Some chapters are stronger than others but the data thriller angle is entertaining.,TRUE,14-01-2026,Reviewed in the United States January 14 2026,SAMPLE007
+15,Data Ghosts,Amazing,Anonymous Reviewer 15,5,Best book!!!,FALSE,15-01-2026,Reviewed in the United States January 15 2026,SAMPLE007
+16,Arcade Essays,Colorful essays,Anonymous Reviewer 16,4,Short essays with personality and a strong sense of visual culture.,TRUE,16-01-2026,Reviewed in the United States January 16 2026,SAMPLE008
+17,Quiet Algorithms,Dense and excellent,Anonymous Reviewer 17,5,This is the most polished technical nonfiction sample in the set with clear structure and careful pacing.,TRUE,17-01-2026,Reviewed in the United States January 17 2026,SAMPLE009
+18,Quiet Algorithms,Strong,Anonymous Reviewer 18,5,Excellent structure and very helpful examples for thinking about systems.,TRUE,18-01-2026,Reviewed in the United States January 18 2026,SAMPLE009
+19,Paper Cities,Atmospheric,Anonymous Reviewer 19,4,The setting carries the story and gives the characters a vivid place to inhabit.,TRUE,19-01-2026,Reviewed in the United States January 19 2026,SAMPLE010
+20,Paper Cities,Not bad,Anonymous Reviewer 20,3,Good ideas but the ending felt rushed compared with the opening.,FALSE,20-01-2026,Reviewed in the United States January 20 2026,SAMPLE010
+21,Night Market Index,Sharp business angle,Anonymous Reviewer 21,5,Clear market examples and a stylish structure make this useful beyond the sample dataset.,TRUE,21-01-2026,Reviewed in the United States January 21 2026,SAMPLE011
+22,Night Market Index,Too glossy,Anonymous Reviewer 22,3,The presentation is strong but some arguments could use more evidence.,TRUE,22-01-2026,Reviewed in the United States January 22 2026,SAMPLE011
+23,Blue Static Poems,Moody collection,Anonymous Reviewer 23,4,A spare collection with good imagery and a consistent late night mood.,TRUE,23-01-2026,Reviewed in the United States January 23 2026,SAMPLE012
+24,Blue Static Poems,No,Anonymous Reviewer 24,1,No.,FALSE,24-01-2026,Reviewed in the United States January 24 2026,SAMPLE012
