@@ -1,32 +1,46 @@
-# Cyberdeck Retro - Amazon Books Review Dashboard
+# Cyberdeck Retro - Revisor de Reviews de Livros
 
-Projeto desenvolvido **for fun** para explorar dados de livros e reviews da Amazon em um painel visual inspirado em interfaces cyberpunk.
+Projeto desenvolvido **for fun** para explorar dados de livros e reviews em um painel visual inspirado em cyberdecks, arcade retrofuturista e Night City.
 
-A ideia do projeto é evoluir para um revisor/analista de reviews de livros com dados atualizados em tempo real. Por enquanto, esta primeira versão de testes trabalha com bases locais em CSV e serve como protótipo inicial da experiência, dos filtros e das visualizações.
+A ideia original era evoluir para um revisor/analista de reviews de livros com dados atualizados em tempo real. Como a prioridade atual é manter o projeto gratuito, seguro e sem gasto com tokens ou APIs pagas, esta versão trabalha com CSVs locais, upload manual de dados e amostras públicas anonimizadas.
 
-Por segurança e privacidade, os CSVs brutos não são versionados por padrão. A base de reviews pode conter nomes de revisores, textos com informações pessoais e conteúdo sujeito aos termos de uso da fonte original. Para manter o projeto testável no GitHub, o repositório inclui amostras anonimizadas.
+Por segurança e privacidade, os CSVs brutos não são versionados por padrão. Bases de reviews podem conter nomes de revisores, textos com informações pessoais e conteúdo sujeito aos termos de uso da fonte original. Para manter o projeto testável no GitHub, o repositório inclui amostras anonimizadas.
 
 ## Status
 
 Em desenvolvimento.
 
-Esta é uma primeira versão de teste. Ainda há melhorias planejadas, especialmente para integrar dados em tempo real, refinar a análise das reviews e organizar melhor a arquitetura do projeto conforme ele crescer.
+Esta é uma versão revisada do protótipo inicial. O app já pode ser clonado e executado por qualquer pessoa usando os dados de exemplo, mas ainda há melhorias planejadas para futuras integrações oficiais e análises mais profundas.
 
 ## O que o projeto faz
 
 - Carrega dados de livros e reviews a partir de arquivos CSV.
+- Permite upload de CSV direto pela interface.
+- Usa dados locais quando existirem.
+- Usa amostras públicas anonimizadas quando os CSVs reais não estiverem disponíveis.
 - Permite filtrar livros por gênero, título, preço máximo e avaliação mínima.
 - Permite visualizar apenas reviews verificadas.
 - Exibe métricas gerais sobre livros, avaliações e reviews.
 - Gera gráficos interativos com Plotly.
-- Mostra livros mais comentados e reviews recentes.
-- Inclui um "Modo Hacker" visual para reforçar a proposta estética do projeto.
+- Mostra livros em destaque, reviews recentes e livros mais comentados.
+- Sinaliza reviews potencialmente frágeis com uma heurística local simples.
+- Permite baixar os livros e reviews filtrados.
+- Exibe um console visual do projeto com status da fonte de dados.
 
 ## Escolha de design
 
 Cyberpunk sempre. Hahaha.
 
-A interface foi criada com uma estética retrofuturista, usando cores neon, fundo escuro, fontes inspiradas em terminal/arcade e uma atmosfera de "cyberdeck". A ideia é transformar uma análise simples de dados em uma experiência visual mais divertida, com cara de painel saído de Night City.
+A interface foi criada para parecer um cyberdeck: fundo escuro, luzes neon, contraste alto, botões coloridos, chips de status, painéis de métricas e uma sensação arcade. A intenção é que a pessoa entenda rapidamente os filtros e gráficos, mas ainda sinta que está navegando em um painel saído de Night City.
+
+O design prioriza:
+
+- leitura simples;
+- filtros claros;
+- métricas visíveis logo no topo;
+- gráficos com cores fortes;
+- ações diretas para upload e download;
+- visual cyberpunk sem tornar a interface confusa.
 
 ## Tecnologias
 
@@ -70,6 +84,13 @@ Execute o app:
 streamlit run datasets/app.py
 ```
 
+Depois de abrir o app, você pode:
+
+- usar os dados de exemplo;
+- enviar seus próprios CSVs pela barra lateral;
+- baixar os resultados filtrados;
+- trocar filtros sem depender de qualquer API externa.
+
 ## Segurança e dados
 
 - Não há chaves de API, tokens ou credenciais no código.
@@ -79,6 +100,18 @@ streamlit run datasets/app.py
 - A busca por título é tratada como texto literal, não como expressão regular.
 - O HTML permitido via `unsafe_allow_html=True` é usado apenas com conteúdo estático do próprio app.
 
+## Custo
+
+Esta versão foi pensada para custo zero:
+
+- não usa API paga;
+- não usa LLM;
+- não consome tokens;
+- não faz scraping da Amazon;
+- roda localmente com Streamlit, Pandas e Plotly.
+
+Para dados mais atuais, o caminho recomendado é usar CSVs próprios, datasets públicos permitidos ou, futuramente, integrações oficiais quando houver credenciais e autorização adequadas.
+
 ## Próximos passos
 
 - Integrar uma fonte de dados atualizada em tempo real.
@@ -86,6 +119,8 @@ streamlit run datasets/app.py
 - Refinar as análises de reviews.
 - Adicionar tratamento de erros para arquivos ausentes ou dados incompletos.
 - Evoluir a experiência visual mantendo a identidade cyberpunk.
+- Criar conectores seguros para fontes públicas ou oficiais.
+- Adicionar mais heurísticas locais para qualidade de reviews.
 
 ## Observação
 
