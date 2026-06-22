@@ -1,0 +1,706 @@
+{
+  "generatedAt": "2026-01-24T00:00:00",
+  "sources": {
+    "books": "Amostra pública",
+    "reviews": "Amostra pública",
+    "reviewPeriod": "01/01/2026 a 24/01/2026",
+    "dataAge": "149 dias"
+  },
+  "metrics": {
+    "books": 12,
+    "reviews": 24,
+    "avgRating": 4.35,
+    "verifiedPct": 66.7,
+    "qualityScore": 68.1,
+    "reviewsToAudit": 6
+  },
+  "summary": {
+    "topGenre": "Other",
+    "topBook": "Arcade Essays",
+    "booksWithReviews": 12,
+    "auditableBooks": 6
+  },
+  "dataQuality": {
+    "completeness": 100.0,
+    "emptyCells": 0,
+    "duplicates": 0,
+    "genreBuckets": 6,
+    "rawGenreLabels": 12,
+    "tables": [
+      {
+        "Área": "Livros",
+        "Linhas": 12,
+        "Colunas": 8,
+        "Células vazias": 0,
+        "Duplicatas": 0
+      },
+      {
+        "Área": "Reviews",
+        "Linhas": 24,
+        "Colunas": 10,
+        "Células vazias": 0,
+        "Duplicatas": 0
+      }
+    ]
+  },
+  "opportunityCards": {
+    "Melhor custo-benefício": "Arcade Essays",
+    "Mais confiável": "Code and Coffee",
+    "Mais comentado": "Neon Pages",
+    "Mais controverso": "Blue Static Poems"
+  },
+  "books": [
+    {
+      "title": "Arcade Essays",
+      "author": "V. Silva",
+      "genre": "Other",
+      "rawGenre": "Essays, Design",
+      "price": 13.3,
+      "rating": 4.4,
+      "reviews": 1,
+      "verifiedPct": 100.0,
+      "qualityScore": 82.0,
+      "reviewsToAudit": 0,
+      "valueScore": 125.7,
+      "ratingStd": 0.0,
+      "scoreBreakdown": {
+        "rating": 88.0,
+        "price": 46.8,
+        "reviewQuality": 82.0,
+        "evidence": 10.0
+      },
+      "genreBenchmark": {
+        "rating": 4.4,
+        "quality": 82.0,
+        "value": 125.7
+      }
+    },
+    {
+      "title": "Code and Coffee",
+      "author": "C. Analyst",
+      "genre": "Nonfiction",
+      "rawGenre": "Nonfiction, Technology",
+      "price": 19.5,
+      "rating": 4.8,
+      "reviews": 2,
+      "verifiedPct": 100.0,
+      "qualityScore": 82.0,
+      "reviewsToAudit": 0,
+      "valueScore": 124.2,
+      "ratingStd": 0.0,
+      "scoreBreakdown": {
+        "rating": 96.0,
+        "price": 22.0,
+        "reviewQuality": 82.0,
+        "evidence": 20.0
+      },
+      "genreBenchmark": {
+        "rating": 4.6,
+        "quality": 82.0,
+        "value": 123.4
+      }
+    },
+    {
+      "title": "Quiet Algorithms",
+      "author": "I. Torres",
+      "genre": "Nonfiction",
+      "rawGenre": "Technology, Nonfiction",
+      "price": 21.0,
+      "rating": 4.9,
+      "reviews": 2,
+      "verifiedPct": 100.0,
+      "qualityScore": 82.0,
+      "reviewsToAudit": 0,
+      "valueScore": 123.9,
+      "ratingStd": 0.0,
+      "scoreBreakdown": {
+        "rating": 98.0,
+        "price": 16.0,
+        "reviewQuality": 82.0,
+        "evidence": 20.0
+      },
+      "genreBenchmark": {
+        "rating": 4.6,
+        "quality": 82.0,
+        "value": 123.4
+      }
+    },
+    {
+      "title": "Retro Future Notes",
+      "author": "N. Cyber",
+      "genre": "Nonfiction",
+      "rawGenre": "Design, Nonfiction",
+      "price": 12.0,
+      "rating": 4.1,
+      "reviews": 2,
+      "verifiedPct": 100.0,
+      "qualityScore": 82.0,
+      "reviewsToAudit": 0,
+      "valueScore": 122.1,
+      "ratingStd": 0.71,
+      "scoreBreakdown": {
+        "rating": 82.0,
+        "price": 52.0,
+        "reviewQuality": 82.0,
+        "evidence": 20.0
+      },
+      "genreBenchmark": {
+        "rating": 4.6,
+        "quality": 82.0,
+        "value": 123.4
+      }
+    },
+    {
+      "title": "Night Market Index",
+      "author": "K. Martins",
+      "genre": "Business",
+      "rawGenre": "Business, Technology",
+      "price": 17.8,
+      "rating": 4.5,
+      "reviews": 2,
+      "verifiedPct": 100.0,
+      "qualityScore": 82.0,
+      "reviewsToAudit": 0,
+      "valueScore": 121.2,
+      "ratingStd": 1.41,
+      "scoreBreakdown": {
+        "rating": 90.0,
+        "price": 28.8,
+        "reviewQuality": 82.0,
+        "evidence": 20.0
+      },
+      "genreBenchmark": {
+        "rating": 4.5,
+        "quality": 82.0,
+        "value": 121.2
+      }
+    },
+    {
+      "title": "Neon Pages",
+      "author": "A. Data",
+      "genre": "Fiction",
+      "rawGenre": "Science Fiction, Technology",
+      "price": 14.99,
+      "rating": 4.7,
+      "reviews": 3,
+      "verifiedPct": 66.7,
+      "qualityScore": 65.3,
+      "reviewsToAudit": 1,
+      "valueScore": 112.9,
+      "ratingStd": 0.58,
+      "scoreBreakdown": {
+        "rating": 94.0,
+        "price": 40.0,
+        "reviewQuality": 65.3,
+        "evidence": 30.0
+      },
+      "genreBenchmark": {
+        "rating": 4.2,
+        "quality": 62.4,
+        "value": 105.7
+      }
+    },
+    {
+      "title": "Paper Cities",
+      "author": "S. Lane",
+      "genre": "Fantasy",
+      "rawGenre": "Fiction, Urban Fantasy",
+      "price": 10.25,
+      "rating": 4.2,
+      "reviews": 2,
+      "verifiedPct": 50.0,
+      "qualityScore": 71.0,
+      "reviewsToAudit": 0,
+      "valueScore": 110.3,
+      "ratingStd": 0.71,
+      "scoreBreakdown": {
+        "rating": 84.0,
+        "price": 59.0,
+        "reviewQuality": 71.0,
+        "evidence": 20.0
+      },
+      "genreBenchmark": {
+        "rating": 4.2,
+        "quality": 71.0,
+        "value": 110.3
+      }
+    },
+    {
+      "title": "The Last Bookmark",
+      "author": "L. Archive",
+      "genre": "Fiction",
+      "rawGenre": "Fiction, Drama",
+      "price": 8.75,
+      "rating": 4.0,
+      "reviews": 2,
+      "verifiedPct": 50.0,
+      "qualityScore": 65.0,
+      "reviewsToAudit": 1,
+      "valueScore": 105.5,
+      "ratingStd": 1.41,
+      "scoreBreakdown": {
+        "rating": 80.0,
+        "price": 65.0,
+        "reviewQuality": 65.0,
+        "evidence": 20.0
+      },
+      "genreBenchmark": {
+        "rating": 4.2,
+        "quality": 62.4,
+        "value": 105.7
+      }
+    },
+    {
+      "title": "Signal Through Paper",
+      "author": "R. Vale",
+      "genre": "Thriller",
+      "rawGenre": "Science Fiction, Mystery",
+      "price": 16.2,
+      "rating": 4.6,
+      "reviews": 2,
+      "verifiedPct": 50.0,
+      "qualityScore": 57.0,
+      "reviewsToAudit": 1,
+      "valueScore": 101.5,
+      "ratingStd": 0.0,
+      "scoreBreakdown": {
+        "rating": 92.0,
+        "price": 35.2,
+        "reviewQuality": 57.0,
+        "evidence": 20.0
+      },
+      "genreBenchmark": {
+        "rating": 4.3,
+        "quality": 52.3,
+        "value": 94.7
+      }
+    },
+    {
+      "title": "Blue Static Poems",
+      "author": "E. North",
+      "genre": "Fiction",
+      "rawGenre": "Poetry, Fiction",
+      "price": 7.9,
+      "rating": 3.8,
+      "reviews": 2,
+      "verifiedPct": 50.0,
+      "qualityScore": 57.0,
+      "reviewsToAudit": 1,
+      "valueScore": 98.7,
+      "ratingStd": 2.12,
+      "scoreBreakdown": {
+        "rating": 76.0,
+        "price": 68.4,
+        "reviewQuality": 57.0,
+        "evidence": 20.0
+      },
+      "genreBenchmark": {
+        "rating": 4.2,
+        "quality": 62.4,
+        "value": 105.7
+      }
+    },
+    {
+      "title": "Data Ghosts",
+      "author": "T. Morgan",
+      "genre": "Thriller",
+      "rawGenre": "Technology, Thriller",
+      "price": 11.4,
+      "rating": 3.9,
+      "reviews": 2,
+      "verifiedPct": 50.0,
+      "qualityScore": 54.0,
+      "reviewsToAudit": 1,
+      "valueScore": 93.9,
+      "ratingStd": 1.41,
+      "scoreBreakdown": {
+        "rating": 78.0,
+        "price": 54.4,
+        "reviewQuality": 54.0,
+        "evidence": 20.0
+      },
+      "genreBenchmark": {
+        "rating": 4.3,
+        "quality": 52.3,
+        "value": 94.7
+      }
+    },
+    {
+      "title": "Midnight Library Logs",
+      "author": "M. Reader",
+      "genre": "Thriller",
+      "rawGenre": "Fiction, Mystery",
+      "price": 9.99,
+      "rating": 4.3,
+      "reviews": 2,
+      "verifiedPct": 0.0,
+      "qualityScore": 46.0,
+      "reviewsToAudit": 1,
+      "valueScore": 88.7,
+      "ratingStd": 0.71,
+      "scoreBreakdown": {
+        "rating": 86.0,
+        "price": 60.0,
+        "reviewQuality": 46.0,
+        "evidence": 20.0
+      },
+      "genreBenchmark": {
+        "rating": 4.3,
+        "quality": 52.3,
+        "value": 94.7
+      }
+    }
+  ],
+  "genres": [
+    {
+      "genre_group": "Other",
+      "books": 1,
+      "avg_rating": 4.4,
+      "avg_quality": 82.0,
+      "avg_value": 125.7,
+      "reviews": 1
+    },
+    {
+      "genre_group": "Nonfiction",
+      "books": 3,
+      "avg_rating": 4.6,
+      "avg_quality": 82.0,
+      "avg_value": 123.4,
+      "reviews": 6
+    },
+    {
+      "genre_group": "Business",
+      "books": 1,
+      "avg_rating": 4.5,
+      "avg_quality": 82.0,
+      "avg_value": 121.2,
+      "reviews": 2
+    },
+    {
+      "genre_group": "Fantasy",
+      "books": 1,
+      "avg_rating": 4.2,
+      "avg_quality": 71.0,
+      "avg_value": 110.3,
+      "reviews": 2
+    },
+    {
+      "genre_group": "Fiction",
+      "books": 3,
+      "avg_rating": 4.17,
+      "avg_quality": 62.43,
+      "avg_value": 105.7,
+      "reviews": 7
+    },
+    {
+      "genre_group": "Thriller",
+      "books": 3,
+      "avg_rating": 4.27,
+      "avg_quality": 52.33,
+      "avg_value": 94.7,
+      "reviews": 6
+    }
+  ],
+  "ratingDistribution": [
+    {
+      "rating": 1,
+      "count": 1
+    },
+    {
+      "rating": 2,
+      "count": 1
+    },
+    {
+      "rating": 3,
+      "count": 4
+    },
+    {
+      "rating": 4,
+      "count": 7
+    },
+    {
+      "rating": 5,
+      "count": 11
+    }
+  ],
+  "trustDistribution": [
+    {
+      "label": "Forte",
+      "count": 16
+    },
+    {
+      "label": "Revisar",
+      "count": 6
+    },
+    {
+      "label": "Boa",
+      "count": 2
+    }
+  ],
+  "recentReviews": [
+    {
+      "book": "Blue Static Poems",
+      "title": "No",
+      "rating": 1.0,
+      "verified": false,
+      "qualityScore": 32,
+      "qualityLabel": "Revisar",
+      "reasons": "não verificada, texto curto, título genérico, nota extrema sem verificação",
+      "words": 1,
+      "date": "24-01-2026"
+    },
+    {
+      "book": "Blue Static Poems",
+      "title": "Moody collection",
+      "rating": 4.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 12,
+      "date": "23-01-2026"
+    },
+    {
+      "book": "Night Market Index",
+      "title": "Too glossy",
+      "rating": 3.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 11,
+      "date": "22-01-2026"
+    },
+    {
+      "book": "Night Market Index",
+      "title": "Sharp business angle",
+      "rating": 5.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 14,
+      "date": "21-01-2026"
+    },
+    {
+      "book": "Paper Cities",
+      "title": "Not bad",
+      "rating": 3.0,
+      "verified": false,
+      "qualityScore": 60,
+      "qualityLabel": "Boa",
+      "reasons": "não verificada, texto curto",
+      "words": 11,
+      "date": "20-01-2026"
+    },
+    {
+      "book": "Paper Cities",
+      "title": "Atmospheric",
+      "rating": 4.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 14,
+      "date": "19-01-2026"
+    },
+    {
+      "book": "Quiet Algorithms",
+      "title": "Strong",
+      "rating": 5.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 10,
+      "date": "18-01-2026"
+    },
+    {
+      "book": "Quiet Algorithms",
+      "title": "Dense and excellent",
+      "rating": 5.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 17,
+      "date": "17-01-2026"
+    },
+    {
+      "book": "Arcade Essays",
+      "title": "Colorful essays",
+      "rating": 4.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 11,
+      "date": "16-01-2026"
+    },
+    {
+      "book": "Data Ghosts",
+      "title": "Amazing",
+      "rating": 5.0,
+      "verified": false,
+      "qualityScore": 26,
+      "qualityLabel": "Revisar",
+      "reasons": "não verificada, texto curto, título genérico, nota extrema sem verificação, pontuação repetida",
+      "words": 2,
+      "date": "15-01-2026"
+    },
+    {
+      "book": "Data Ghosts",
+      "title": "Uneven but fun",
+      "rating": 3.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 13,
+      "date": "14-01-2026"
+    },
+    {
+      "book": "Signal Through Paper",
+      "title": "Recommended",
+      "rating": 5.0,
+      "verified": false,
+      "qualityScore": 32,
+      "qualityLabel": "Revisar",
+      "reasons": "não verificada, texto curto, título genérico, nota extrema sem verificação",
+      "words": 1,
+      "date": "13-01-2026"
+    },
+    {
+      "book": "Signal Through Paper",
+      "title": "Smart premise",
+      "rating": 5.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 13,
+      "date": "12-01-2026"
+    },
+    {
+      "book": "The Last Bookmark",
+      "title": "Ok",
+      "rating": 2.0,
+      "verified": false,
+      "qualityScore": 48,
+      "qualityLabel": "Revisar",
+      "reasons": "não verificada, texto curto, título genérico",
+      "words": 3,
+      "date": "11-01-2026"
+    },
+    {
+      "book": "The Last Bookmark",
+      "title": "Quiet and emotional",
+      "rating": 4.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 13,
+      "date": "10-01-2026"
+    },
+    {
+      "book": "Retro Future Notes",
+      "title": "Too short",
+      "rating": 3.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 12,
+      "date": "09-01-2026"
+    },
+    {
+      "book": "Retro Future Notes",
+      "title": "Strong visual references",
+      "rating": 4.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 13,
+      "date": "08-01-2026"
+    },
+    {
+      "book": "Code and Coffee",
+      "title": "Practical",
+      "rating": 5.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 12,
+      "date": "07-01-2026"
+    },
+    {
+      "book": "Code and Coffee",
+      "title": "Useful and clear",
+      "rating": 5.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 14,
+      "date": "06-01-2026"
+    },
+    {
+      "book": "Midnight Library Logs",
+      "title": "Good",
+      "rating": 5.0,
+      "verified": false,
+      "qualityScore": 32,
+      "qualityLabel": "Revisar",
+      "reasons": "não verificada, texto curto, título genérico, nota extrema sem verificação",
+      "words": 2,
+      "date": "05-01-2026"
+    },
+    {
+      "book": "Midnight Library Logs",
+      "title": "Interesting mystery",
+      "rating": 4.0,
+      "verified": false,
+      "qualityScore": 60,
+      "qualityLabel": "Boa",
+      "reasons": "não verificada, texto curto",
+      "words": 14,
+      "date": "04-01-2026"
+    },
+    {
+      "book": "Neon Pages",
+      "title": "Wow",
+      "rating": 5.0,
+      "verified": false,
+      "qualityScore": 32,
+      "qualityLabel": "Revisar",
+      "reasons": "não verificada, texto curto, título genérico, nota extrema sem verificação",
+      "words": 1,
+      "date": "03-01-2026"
+    },
+    {
+      "book": "Neon Pages",
+      "title": "Stylish and quick",
+      "rating": 4.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 14,
+      "date": "02-01-2026"
+    },
+    {
+      "book": "Neon Pages",
+      "title": "Great cyberpunk atmosphere",
+      "rating": 5.0,
+      "verified": true,
+      "qualityScore": 82,
+      "qualityLabel": "Forte",
+      "reasons": "texto curto",
+      "words": 13,
+      "date": "01-01-2026"
+    }
+  ]
+}

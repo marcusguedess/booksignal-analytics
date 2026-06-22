@@ -1,0 +1,87 @@
+name: Publicar GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Instalar dependências Python
+        run: pip install -r requirements.txt
+
+      - name: Exportar dados analíticos
+        run: python analytics/export_booksignal.py
+
+      - name: Rodar testes Python
+        run: python -m unittest discover -s tests -p "test_*.py"
+
+      - name: Verificar sintaxe Python
+        run: python -m py_compile analytics/export_booksignal.py datasets/booksignal/analysis.py datasets/booksignal/data_loader.py
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: web/package-lock.json
+
+      - name: Instalar dependências web
+        working-directory: web
+        run: npm ci
+
+      - name: Rodar lint web
+        working-directory: web
+        run: npm run lint
+
+      - name: Rodar typecheck web
+        working-directory: web
+        run: npm run typecheck
+
+      - name: Gerar site estático
+        working-directory: web
+        env:
+          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+          NEXT_PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: npm run build
+
+      - name: Verificar export estático
+        run: test -f web/out/index.html && test -f web/out/.nojekyll
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Enviar artefato
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/out
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

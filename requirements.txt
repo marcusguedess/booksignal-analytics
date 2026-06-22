@@ -1,3 +1,1 @@
-streamlit
-pandas
-plotly
+pandas==3.0.3

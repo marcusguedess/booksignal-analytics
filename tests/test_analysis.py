@@ -8,7 +8,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "datasets"))
 
-from cyberdeck.analysis import (
+from booksignal.analysis import (
     add_review_signals,
     build_book_summary,
     data_quality_report,

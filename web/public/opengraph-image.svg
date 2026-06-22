@@ -1,0 +1,63 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#09111B"/>
+      <stop offset="1" stop-color="#121A28"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(210 140) rotate(42) scale(280 260)">
+      <stop stop-color="#7DD3FC" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#7DD3FC" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1040 90) rotate(58) scale(220 200)">
+      <stop stop-color="#8DD8C0" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#8DD8C0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+  <g opacity="0.18" stroke="#FFFFFF">
+    <path d="M0 98H1200" />
+    <path d="M0 186H1200" />
+    <path d="M0 274H1200" />
+    <path d="M0 362H1200" />
+    <path d="M0 450H1200" />
+    <path d="M0 538H1200" />
+  </g>
+  <g opacity="0.12" stroke="#FFFFFF">
+    <path d="M112 0V630" />
+    <path d="M224 0V630" />
+    <path d="M336 0V630" />
+    <path d="M448 0V630" />
+    <path d="M560 0V630" />
+    <path d="M672 0V630" />
+    <path d="M784 0V630" />
+    <path d="M896 0V630" />
+    <path d="M1008 0V630" />
+    <path d="M1120 0V630" />
+  </g>
+  <circle cx="1068" cy="120" r="12" fill="#7DD3FC"/>
+  <circle cx="1118" cy="120" r="6" fill="#8DD8C0"/>
+  <rect x="88" y="84" width="132" height="28" rx="14" fill="#0E1A29" stroke="#7DD3FC" stroke-opacity="0.3"/>
+  <text x="110" y="103" fill="#7DD3FC" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="2">BOOKSIGNAL</text>
+  <text x="86" y="238" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="800">
+    <tspan x="86" dy="0">Inteligência visual</tspan>
+    <tspan x="86" dy="74">para catálogo editorial</tspan>
+    <tspan x="86" dy="74">e reviews confiáveis.</tspan>
+  </text>
+  <text x="88" y="472" fill="#C8D2E2" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="500">
+    Pipeline Python, UI Next.js e leitura de mercado orientada por evidência.
+  </text>
+  <g transform="translate(786 160)">
+    <rect x="0" y="0" width="300" height="300" rx="28" fill="#0B1520" stroke="#FFFFFF" stroke-opacity="0.14"/>
+    <path d="M36 62H264" stroke="#7DD3FC" stroke-opacity="0.4" stroke-width="2"/>
+    <path d="M36 118H228" stroke="#8DD8C0" stroke-opacity="0.4" stroke-width="2"/>
+    <path d="M36 174H252" stroke="#F6C177" stroke-opacity="0.35" stroke-width="2"/>
+    <path d="M36 230H196" stroke="#FCA5A5" stroke-opacity="0.35" stroke-width="2"/>
+    <circle cx="84" cy="62" r="8" fill="#7DD3FC"/>
+    <circle cx="186" cy="118" r="8" fill="#8DD8C0"/>
+    <circle cx="148" cy="174" r="8" fill="#F6C177"/>
+    <circle cx="110" cy="230" r="8" fill="#FCA5A5"/>
+    <text x="36" y="272" fill="#DCE7F5" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="600">Dados normalizados · Score explicável</text>
+  </g>
+</svg>

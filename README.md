@@ -1,205 +1,136 @@
-# Cyberdeck Retro - Revisor de Reviews de Livros
+# BookSignal Analytics
 
-![Banner pixel art neon do Cyberdeck Retro](assets/readme-banner.svg)
+BookSignal Analytics é um projeto de portfólio para análise de catálogo editorial. Ele combina metadados de livros, preço, rating e sinais de qualidade de reviews em um dashboard estático preparado para GitHub Pages.
 
-Projeto autoral criado e assinado por **Marcus Guedes**.
+O projeto tem duas camadas:
 
-Projeto desenvolvido **for fun** para explorar dados de livros e reviews em um painel visual inspirado em cyberdecks, arcade retrofuturista e Night City.
+- um pipeline Python que limpa CSVs e exporta um contrato JSON;
+- uma interface em Next.js que apresenta ranking, qualidade das reviews, benchmarks por categoria e checagens de qualidade da base.
 
-A ideia original era evoluir para um revisor/analista de reviews de livros com dados atualizados em tempo real. Como a prioridade atual é manter o projeto gratuito, seguro e sem gasto com tokens ou APIs pagas, esta versão trabalha com CSVs locais, upload manual de dados e amostras públicas anonimizadas.
+## Interface
 
-Por segurança e privacidade, os CSVs brutos não são versionados por padrão. Bases de reviews podem conter nomes de revisores, textos com informações pessoais e conteúdo sujeito aos termos de uso da fonte original. Para manter o projeto testável no GitHub, o repositório inclui amostras anonimizadas.
+O dashboard é organizado em cinco visões:
 
-## Status
+- `Visão geral`: resumo executivo, cards de oportunidade e detalhe do livro selecionado.
+- `Ranking`: catálogo filtrado por intenção de decisão.
+- `Reviews`: evidências recentes do livro selecionado.
+- `Dados`: distribuições agregadas e qualidade da base.
+- `Metodologia`: interpretação do score, limites e requisitos de fonte.
 
-Em desenvolvimento, mas já funcional para testes públicos.
+As imagens abaixo foram capturadas a partir do build estático de produção.
 
-A versão atual inclui UI revisada, upload de CSV, dados de exemplo, score local de confiança, radar de compra, comparador de livros e exportação segura dos resultados filtrados.
+![Dashboard desktop do BookSignal](assets/screenshots/dashboard-desktop.png)
 
-## Funcionalidades
+Versão mobile:
 
-- Upload de CSVs de livros e reviews direto pela interface.
-- Fallback automático para CSV local ou amostras públicas anonimizadas.
-- Filtros por gênero, título, preço máximo e nota mínima.
-- Filtro de reviews verificadas.
-- Filtro de reviews que merecem revisão manual.
-- Busca textual literal em reviews, títulos e nomes de livros.
-- Score local de confiança das reviews.
-- Explicação dos motivos que impactaram o score de cada review.
-- Radar de compra com destaques automáticos.
-- Comparador de até 4 livros.
-- Aba de qualidade dos dados com origem, colunas, vazios e duplicatas.
-- Gráficos interativos com Plotly.
-- Exportação de CSVs filtrados.
-- Proteção simples contra CSV formula injection nos arquivos exportados.
-- Interface em pixel art neon com foco em leitura rápida e navegação fácil.
+![Dashboard mobile do BookSignal](assets/screenshots/dashboard-mobile.png)
 
-## Score de confiança
+## Perguntas Que O Projeto Responde
 
-O score de confiança é uma heurística local, sem IA paga e sem consumo de tokens.
+- Quais livros são bons candidatos para promoção ou curadoria?
+- Quais livros têm boas notas, mas evidência fraca nas reviews?
+- Quais gêneros mostram melhor relação entre preço, rating e qualidade das reviews?
+- A base analisada é completa o bastante para sustentar a leitura?
 
-Ele reduz pontos quando uma review apresenta sinais como:
-
-- review não verificada;
-- texto muito curto;
-- título genérico;
-- nota extrema combinada com ausência de verificação;
-- pontuação repetida em excesso.
-
-O score não é uma detecção definitiva de fraude. Ele serve para priorizar revisão humana.
-
-Cada review exibe também os motivos do alerta, como `não verificada`, `texto curto`, `título genérico` ou `nota extrema sem verificação`.
-
-## Radar de compra
-
-O radar destaca automaticamente:
-
-- melhor custo-benefício;
-- livro mais confiável;
-- livro mais comentado;
-- livro mais controverso.
-
-Esses destaques usam preço, nota, volume de reviews, percentual de reviews verificadas e score médio de confiança.
-
-## Escolha de design
-
-Cyberpunk sempre. Hahaha.
-
-A interface foi criada para parecer um painel arcade de ficção urbana: fundo escuro, luzes neon, contraste alto, botões coloridos, chips de status, painéis de métricas e um banner em pixel art com skyline, sol neon e grade retrofuturista. A intenção é que a pessoa entenda rapidamente os filtros e gráficos, mas ainda sinta que está entrando em um console visual memorável.
-
-O design prioriza:
-
-- leitura simples;
-- filtros claros;
-- métricas visíveis logo no topo;
-- gráficos com cores fortes;
-- ações diretas para upload, comparação e download;
-- visual expressivo sem tornar a interface confusa.
-
-## Tecnologias
-
-- Python
-- Streamlit
-- Pandas
-- Plotly
-
-## Estrutura atual
+## Estrutura
 
 ```text
 .
-├── .streamlit/
-│   └── config.toml
-├── assets/
-│   └── readme-banner.svg
+├── analytics/
+│   └── export_booksignal.py        # Gera o JSON do dashboard
 ├── datasets/
-│   ├── app.py
-│   ├── cyberdeck/
-│   │   ├── __init__.py
-│   │   ├── analysis.py
-│   │   ├── data_loader.py
-│   │   └── ui.py
+│   ├── booksignal/                 # Funções Python de análise
 │   ├── sample_books.csv
-│   ├── sample_reviews.csv
-│   └── README.md
-├── .gitignore
-├── LICENSE
-├── requirements.txt
-└── README.md
+│   └── sample_reviews.csv
+├── docs/
+│   ├── ARQUITETURA.md
+│   ├── METODOLOGIA.md
+│   └── CHECKLIST_PUBLICACAO.md
+├── scripts/
+│   └── validate.ps1
+├── tests/
+│   ├── test_analysis.py
+│   └── test_export_booksignal.py
+└── web/
+    ├── src/app/
+    ├── src/components/dashboard.tsx
+    └── src/data/booksignal.json
 ```
 
-## Como rodar localmente
+## Stack
 
-O projeto já inclui dados de exemplo anonimizados, então pode ser executado logo após a instalação.
+- Python e Pandas para preparação dos dados.
+- Next.js, React e TypeScript para a interface.
+- Export estático para GitHub Pages.
+- GitHub Actions para testes, lint, typecheck e publicação.
 
-Instale as dependências:
+## Como Rodar
+
+Instale as dependências Python:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Execute o app:
+Gere os dados do dashboard:
 
 ```bash
-streamlit run datasets/app.py
+python analytics/export_booksignal.py
 ```
 
-Depois de abrir o app, você pode:
+Rode a interface:
 
-- usar os dados de exemplo;
-- enviar seus próprios CSVs pela barra lateral;
-- buscar termos específicos dentro das reviews;
-- comparar livros;
-- baixar os resultados filtrados;
-- trocar filtros sem depender de qualquer API externa.
+```bash
+cd web
+npm install
+npm run dev
+```
 
-## Testes
+Abra `http://localhost:3000`.
 
-Execute os testes locais das heurísticas com:
+## Validação
+
+Testes Python:
 
 ```bash
 python -m unittest discover -s tests -p "test_*.py"
 ```
 
-## Usando dados locais completos
+Checks do frontend:
 
-Para usar uma base local completa, coloque estes arquivos dentro da pasta `datasets/`:
+```bash
+cd web
+npm run lint
+npm run typecheck
+npm run build
+```
 
-- `Top-100 Trending Books.csv`
-- `customer reviews.csv`
+Validação completa no Windows:
 
-Esses arquivos estão no `.gitignore` e não devem ser publicados no GitHub.
+```powershell
+.\scripts\validate.ps1
+```
 
-## Deploy gratuito
+## GitHub Pages
 
-O projeto está preparado para Streamlit Community Cloud.
+O app Next.js está configurado para export estático. Para simular um build local com o caminho do repositório:
 
-Configuração sugerida:
+```powershell
+.\scripts\validate.ps1 -BasePath "/NOME_DO_REPOSITORIO" -SiteUrl "https://USUARIO.github.io/NOME_DO_REPOSITORIO"
+```
 
-- Repositório: `marcusguedess/projeto_retro`
-- Branch: `main`
-- Main file path: `datasets/app.py`
+O artefato final é gerado em `web/out`.
 
-Não é necessário cadastrar secrets para a versão pública com samples.
+O workflow `.github/workflows/pages.yml` executa exportação dos dados, testes Python, lint, typecheck e build estático antes de publicar no GitHub Pages.
 
-## Segurança e dados
+## Observações Sobre Dados
 
-- Não há chaves de API, tokens ou credenciais no código.
-- Arquivos `.env`, logs, cache Python e `secrets.toml` estão ignorados no Git.
-- CSVs brutos estão ignorados para evitar publicar dados de terceiros ou conteúdo pessoal de reviews.
-- Amostras anonimizadas permitem testes públicos sem expor dados reais.
-- Uploads são limitados a 50 MB pela configuração do Streamlit.
-- A busca por título é tratada como texto literal, não como expressão regular.
-- A busca nas reviews também é literal, evitando execução de padrões regex fornecidos pelo usuário.
-- O HTML permitido via `unsafe_allow_html=True` é usado apenas com conteúdo estático ou valores controlados pelo app.
-- Exportações CSV neutralizam células iniciadas por `=`, `+`, `-` ou `@`.
+O repositório inclui CSVs de amostra para demonstração. Bases brutas de terceiros não devem ser commitadas sem licença, permissão de uso e revisão de privacidade.
 
-## Custo
+O score de qualidade das reviews é uma heurística local. Ele destaca evidências fracas, como texto curto, review não verificada e rating extremo, mas não deve ser interpretado como detecção de fraude.
 
-Esta versão foi pensada para custo zero:
+## Documentação
 
-- não usa API paga;
-- não usa LLM;
-- não consome tokens;
-- não faz scraping da Amazon;
-- roda localmente com Streamlit, Pandas e Plotly.
-
-Para dados mais atuais, o caminho recomendado é usar CSVs próprios, datasets públicos permitidos ou, futuramente, integrações oficiais quando houver credenciais e autorização adequadas.
-
-## Autoria e licença
-
-Este projeto é autoral de **Marcus Guedes**.
-
-O código está público para visualização, estudo e teste do projeto, mas não está liberado como licença open-source permissiva. Todos os direitos estão reservados, salvo autorização expressa do autor.
-
-## Próximos passos
-
-- Adicionar testes automatizados para as heurísticas.
-- Criar conectores seguros para fontes públicas permitidas.
-- Melhorar o modelo local de score com mais sinais estatísticos.
-- Adicionar busca textual nas reviews.
-- Adicionar versão em inglês.
-- Criar screenshots oficiais para o README após o deploy.
-
-## Observação
-
-Este projeto ainda está em conclusão e foi criado como experimento pessoal. A versão atual é um protótipo funcional para testes, demonstração de UI e validação da ideia.
+- [Arquitetura](docs/ARQUITETURA.md)
+- [Metodologia](docs/METODOLOGIA.md)
+- [Checklist de publicação](docs/CHECKLIST_PUBLICACAO.md)

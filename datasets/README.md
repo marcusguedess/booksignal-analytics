@@ -1,6 +1,6 @@
 # Dados locais
 
-Os arquivos CSV brutos usados pelo app ficam nesta pasta durante o desenvolvimento local, mas nao devem ser publicados no GitHub por padrao.
+Os arquivos CSV brutos usados no desenvolvimento local podem ficar nesta pasta, mas nao devem ser publicados no GitHub por padrao.
 
 Arquivos esperados pelo app:
 
@@ -9,7 +9,7 @@ Arquivos esperados pelo app:
 
 Motivo: a base de reviews pode conter nomes de revisores, textos longos com informacoes pessoais e conteudo sujeito a termos de uso da fonte original. Para publicar o projeto, mantenha os CSVs fora do repositorio ou substitua por uma amostra anonimizada.
 
-O repositorio inclui os arquivos `sample_books.csv` e `sample_reviews.csv` para que outras pessoas consigam clonar e testar o app sem acessar os dados brutos.
+O repositorio inclui os arquivos `sample_books.csv` e `sample_reviews.csv` para que outras pessoas consigam clonar, gerar o JSON analitico e testar o dashboard sem acessar os dados brutos.
 
 ## Colunas esperadas
 

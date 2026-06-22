@@ -1,1 +1,1 @@
-"""Test package for Cyberdeck Retro."""
+"""Tests for BookSignal Analytics."""
