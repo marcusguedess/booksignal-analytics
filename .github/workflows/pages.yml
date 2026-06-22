@@ -39,7 +39,7 @@ jobs:
         run: python -m py_compile analytics/export_booksignal.py datasets/booksignal/analysis.py datasets/booksignal/data_loader.py
 
       - name: Configurar Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "24"
           cache: "npm"
