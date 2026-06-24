@@ -1,6 +1,6 @@
-# BookSignal
+# BookSignal Analytics
 
-BookSignal é um projeto de portfólio para decisão editorial. Ele combina metadados de livros, preço, rating e sinais de confiança para indicar quais títulos devem ser promovidos, auditados ou mantidos em observação.
+BookSignal Analytics é um projeto de portfólio para decisão editorial. Ele combina metadados de livros, preço, rating e sinais de confiança para indicar quais títulos devem ser promovidos, auditados ou mantidos em observação.
 
 O projeto não tenta coletar dados automaticamente de Amazon, Mercado Livre ou lojas editoriais. Essas fontes dependem de APIs oficiais, permissão de uso, exportações autorizadas ou contratos de dados. A proposta aqui é mostrar a etapa de análise depois da ingestão: o usuário pode testar a demo com dados de amostra ou importar um CSV local no navegador.
 
@@ -33,7 +33,7 @@ Também são aceitos alguns nomes em português, como `titulo`, `autor`, `genero
 - `Crawler`: programa que navega por páginas para encontrar ou coletar informações.
 - `API`: acesso oficial que um serviço oferece para outros sistemas usarem seus dados.
 - `CSV`: planilha simples em texto, compatível com Excel, Google Sheets e sistemas internos.
-- `Score`: pontuação calculada para comparar itens. No BookSignal, combina nota, preço, reviews e confiança.
+- `Score`: pontuação calculada para comparar itens. No BookSignal Analytics, combina nota, preço, reviews e confiança.
 - `Rating`: nota média dada por leitores, normalmente de 1 a 5 estrelas.
 - `Review`: avaliação escrita por leitor.
 - `Benchmark`: comparação com uma média de referência, como a média do gênero.

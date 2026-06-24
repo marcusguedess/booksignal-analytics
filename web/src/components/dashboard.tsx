@@ -327,14 +327,19 @@ export function Dashboard({ data: initialData }: { data: DashboardData }) {
 
   return (
     <main className="shell">
+      <header className="topbar">
+        <strong>BookSignal Analytics</strong>
+        <span>Demo de decisão editorial com CSV local</span>
+      </header>
+
       <section className="hero">
         <div className="hero__content">
-          <p className="eyebrow">BookSignal</p>
-          <h1>Decida quais livros promover, auditar ou deixar em observação.</h1>
+          <p className="eyebrow">Produto de dados para catálogo editorial</p>
+          <h1>Priorize livros com uma recomendação explicável, não com achismo.</h1>
           <p className="hero__copy">
-            Uma demo de produto de dados para catálogos editoriais. Ela não faz scraping, ou seja,
-            não entra em lojas online para copiar dados automaticamente. A análise funciona com
-            dados autorizados, planilhas CSV importadas ou a amostra incluida no projeto.
+            BookSignal Analytics transforma uma planilha de catálogo em três saídas simples:
+            promover, auditar ou observar. Ele não faz scraping; trabalha com dados autorizados,
+            CSV importado no navegador ou a amostra incluida no projeto.
           </p>
           <div className="hero__actions">
             <label className="file-button">
