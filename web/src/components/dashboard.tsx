@@ -393,7 +393,15 @@ export function Dashboard({ data: initialData }: { data: DashboardData }) {
     <main className="shell">
       <header className="topbar">
         <div className="brand">
-          <span className="brand__mark" aria-hidden="true">BS</span>
+          <span className="brand__mark" aria-hidden="true">
+            <span className="brand__rail" />
+            <span className="brand__monogram">BS</span>
+            <span className="brand__signal">
+              <i />
+              <i />
+              <i />
+            </span>
+          </span>
           <div>
             <strong>BookSignal Analytics</strong>
             <span>Decisão editorial com CSV local</span>
