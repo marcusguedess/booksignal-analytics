@@ -13,6 +13,14 @@ const modeLabels: Record<DecisionMode, string> = {
   value: "Barganhas",
 };
 
+const modeDescriptions: Record<DecisionMode, string> = {
+  promote: "Destaque títulos com sinal consistente.",
+  audit: "Encontre sinais que pedem revisão humana.",
+  value: "Compare preço, nota e evidências.",
+};
+
+const decisionModes: DecisionMode[] = ["promote", "audit", "value"];
+
 const sortLabels: Record<SortKey, string> = {
   decision: "Recomendação",
   valueScore: "Score",
@@ -302,6 +310,13 @@ export function Dashboard({ data: initialData }: { data: DashboardData }) {
   ];
   const decisionMax = maxValue(decisionDistribution);
   const selectedGenre = data.genres.find((row) => row.genre_group === selectedBook?.genre);
+  const hasActiveFilters = query.length > 0 || genre !== "Todos" || sortKey !== "decision";
+
+  function resetFilters() {
+    setGenre("Todos");
+    setQuery("");
+    setSortKey("decision");
+  }
 
   function importText(text: string) {
     const imported = buildImportedData(initialData, text);
@@ -328,18 +343,23 @@ export function Dashboard({ data: initialData }: { data: DashboardData }) {
   return (
     <main className="shell">
       <header className="topbar">
-        <strong>BookSignal Analytics</strong>
-        <span>Demo de decisão editorial com CSV local</span>
+        <div className="brand">
+          <span className="brand__mark" aria-hidden="true">BS</span>
+          <div>
+            <strong>BookSignal Analytics</strong>
+            <span>Decisão editorial com CSV local</span>
+          </div>
+        </div>
+        <span className="topbar__status">Amostra ativa</span>
       </header>
 
       <section className="hero">
         <div className="hero__content">
           <p className="eyebrow">Produto de dados para catálogo editorial</p>
-          <h1>Priorize livros com critérios claros e recomendações explicáveis.</h1>
+          <h1>Da planilha para uma decisão editorial clara.</h1>
           <p className="hero__copy">
-            BookSignal Analytics transforma uma planilha de catálogo em três saídas simples:
-            promover, auditar ou observar. Ele não faz scraping; trabalha com dados autorizados,
-            CSV importado no navegador ou a amostra incluida no projeto.
+            Compare sinais de preço, avaliação e qualidade para decidir onde promover, onde revisar
+            e o que manter em observação.
           </p>
           <div className="hero__actions">
             <label className="file-button">
@@ -354,7 +374,7 @@ export function Dashboard({ data: initialData }: { data: DashboardData }) {
               Baixar template
             </a>
           </div>
-          <p className="import-status">{importStatus}</p>
+          <p className="import-status" aria-live="polite">{importStatus}</p>
         </div>
         <div className="decision-board" aria-label="Resumo de decisoes">
           <DecisionTile label="Promover" value={promoteCount} tone="strong" />
@@ -364,32 +384,56 @@ export function Dashboard({ data: initialData }: { data: DashboardData }) {
         </div>
       </section>
 
-      <section className="source-note">
-        <strong>Escopo honesto:</strong>
-        <span>
-          Amazon, Mercado Livre e lojas editoriais exigem API oficial, permissão ou exportação manual.
-          API é uma porta de acesso criada pelo próprio serviço. Sem isso, copiar dados direto do site
-          vira scraping: um método frágil, sujeito a bloqueios e restrições legais.
-        </span>
+      <section className="context-bar" aria-label="Contexto dos dados">
+        <div className="context-item">
+          <span>Fonte</span>
+          <strong>{data.sources.books}</strong>
+        </div>
+        <div className="context-item">
+          <span>Período</span>
+          <strong>{data.sources.reviewPeriod}</strong>
+        </div>
+        <div className="context-item">
+          <span>Atualização</span>
+          <strong>{data.sources.dataAge}</strong>
+        </div>
+        <details className="scope-details">
+          <summary>Dados e limites</summary>
+          <p>
+            A análise começa após a ingestão. A demo processa CSVs localmente e não coleta dados de
+            marketplaces ou lojas sem API, permissão ou exportação autorizada.
+          </p>
+        </details>
       </section>
 
-      <section className="glossary-strip" aria-label="Glossário rápido">
-        <GlossaryTerm term="CSV" explanation="planilha simples em texto, aberta por Excel, Google Sheets e sistemas internos" />
-        <GlossaryTerm term="Score" explanation="nota calculada para comparar livros dentro da mesma base" />
-        <GlossaryTerm term="Rating" explanation="nota média dada pelos leitores, geralmente de 1 a 5 estrelas" />
-        <GlossaryTerm term="Reviews" explanation="avaliações escritas pelos leitores" />
-        <GlossaryTerm term="Benchmark" explanation="comparação com a média da categoria" />
-      </section>
-
-      <section className="command">
+      <section className="workspace" aria-labelledby="workspace-title">
+        <div className="workspace__header">
           <div>
             <p className="section-kicker">Mesa de decisão</p>
-          <h2>Filtre a base e veja a recomendação em linguagem direta.</h2>
+            <h2 id="workspace-title">Escolha uma intenção e explore a base.</h2>
           </div>
+          <span className="workspace__count">{data.metrics.books} títulos na base</span>
+        </div>
+
+        <div className="decision-tabs" role="group" aria-label="Intenção de decisão">
+          {decisionModes.map((mode) => (
+            <button
+              aria-pressed={decisionMode === mode}
+              className={`decision-tab ${decisionMode === mode ? "is-active" : ""}`}
+              key={mode}
+              onClick={() => setDecisionMode(mode)}
+              type="button"
+            >
+              <strong>{modeLabels[mode]}</strong>
+              <span>{modeDescriptions[mode]}</span>
+            </button>
+          ))}
+        </div>
+
         <div className="filters">
           <input
             aria-label="Buscar livro, autor ou genero"
-            placeholder="Buscar livro, autor ou genero"
+            placeholder="Buscar título, autor ou categoria"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
           />
@@ -405,17 +449,13 @@ export function Dashboard({ data: initialData }: { data: DashboardData }) {
               </option>
             ))}
           </select>
-          <select
-            aria-label="Modo de decisao"
-            value={decisionMode}
-            onChange={(event) => setDecisionMode(event.target.value as DecisionMode)}
-          >
-            {Object.entries(modeLabels).map(([key, label]) => (
-              <option key={key} value={key}>
-                {label}
-              </option>
-            ))}
-          </select>
+          {hasActiveFilters ? (
+            <button className="clear-button" onClick={resetFilters} type="button">
+              Limpar filtros
+            </button>
+          ) : (
+            <span className="filters__hint">Ordenado por recomendação</span>
+          )}
         </div>
       </section>
 
@@ -423,41 +463,48 @@ export function Dashboard({ data: initialData }: { data: DashboardData }) {
         <div className="panel panel--large">
           <div className="panel__header">
             <div>
-              <p className="section-kicker">Ranking acionavel</p>
+              <p className="section-kicker">Ranking acionável</p>
               <h2>{filteredBooks.length} livros encontrados</h2>
             </div>
-            <span>Modo: {modeLabels[decisionMode]}</span>
+            <span>{modeDescriptions[decisionMode]}</span>
           </div>
-          <div className="book-list">
-            {filteredBooks.map((book, index) => {
-              const rec = recommendation(book);
-              return (
-                <button
-                  className={`book-row ${book.title === selectedBook?.title ? "is-active" : ""}`}
-                  key={book.title}
-                  type="button"
-                  onClick={() => setSelectedTitle(book.title)}
-                >
-                  <span className="rank">{String(index + 1).padStart(2, "0")}</span>
-                  <span className="book-main">
-                    <strong>{book.title}</strong>
-                    <small>
-                      {book.author.trim()} · {book.genre}
-                    </small>
-                  </span>
-                  <span className={`status status--${rec.tone}`}>{rec.label}</span>
-                  <span className="book-score">
-                    {formatNumber(modeScore(book, decisionMode), 1)}
-                    <small>score de prioridade</small>
-                  </span>
-                </button>
-              );
-            })}
-          </div>
+          {filteredBooks.length ? (
+            <div className="book-list">
+              {filteredBooks.map((book, index) => {
+                const rec = recommendation(book);
+                return (
+                  <button
+                    aria-pressed={book.title === selectedBook?.title}
+                    className={`book-row ${book.title === selectedBook?.title ? "is-active" : ""}`}
+                    key={book.title}
+                    type="button"
+                    onClick={() => setSelectedTitle(book.title)}
+                  >
+                    <span className="rank">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="book-main">
+                      <strong>{book.title}</strong>
+                      <small>{book.author.trim()} · {book.genre}</small>
+                    </span>
+                    <span className={`status status--${rec.tone}`}>{rec.label}</span>
+                    <span className="book-score">
+                      {formatNumber(modeScore(book, decisionMode), 1)}
+                      <small>prioridade</small>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="empty-state">
+              <strong>Nenhum livro encontrado</strong>
+              <p>Altere a busca ou limpe os filtros para voltar à base completa.</p>
+              <button className="clear-button" onClick={resetFilters} type="button">Limpar filtros</button>
+            </div>
+          )}
         </div>
 
         <aside className="panel insight">
-          <p className="section-kicker">Recomendacao</p>
+          <p className="section-kicker">Leitura recomendada</p>
           <h2>{selectedBook?.title}</h2>
           <p>
             {selectedBook?.author.trim()} · {selectedBook?.rawGenre}
@@ -475,10 +522,9 @@ export function Dashboard({ data: initialData }: { data: DashboardData }) {
           </div>
           {selectedGenre ? (
             <div className="decision decision--secondary">
-              <strong>Benchmark da categoria</strong>
+              <strong>Referência da categoria</strong>
               <p>
-                Benchmark significa comparacao. Aqui, o livro e comparado com a media do genero:
-                rating {selectedGenre.avg_rating.toFixed(2)}, confianca {selectedGenre.avg_quality.toFixed(1)}
+                Média de {selectedBook?.genre}: rating {selectedGenre.avg_rating.toFixed(2)}, confiança {selectedGenre.avg_quality.toFixed(1)}
                 e score {selectedGenre.avg_value.toFixed(1)}.
               </p>
             </div>
@@ -512,47 +558,15 @@ export function Dashboard({ data: initialData }: { data: DashboardData }) {
         </ChartPanel>
       </section>
 
-      <section className="method-grid">
-        <article className="panel method-card">
-          <p className="section-kicker">Importacao</p>
-          <h2>CSV local, sem servidor</h2>
-          <p>
-            CSV e uma planilha simples. O arquivo e processado no navegador, sem envio para servidor.
-            Colunas aceitas: title (titulo), author (autor), genre (genero), price (preco), rating (nota),
-            reviews (avaliacoes), verifiedPct (porcentagem verificada) e qualityScore (score de confianca).
-          </p>
-        </article>
-        <article className="panel method-card">
-          <p className="section-kicker">Limite do produto</p>
-          <h2>Coleta fora do escopo da demo</h2>
-          <p>
-            Crawler e um robo que visita paginas. Scraping e quando esse robo copia informacoes do site.
-            Marketplaces podem bloquear isso ou proibir nos termos de uso, por isso a demo evita essa dependencia.
-          </p>
-        </article>
-        <article className="panel method-card">
-          <p className="section-kicker">Reviews</p>
-          <h2>Evidencia auditavel</h2>
-          <p>
-            Reviews sao avaliacoes dos leitores. Na demo, textos muito curtos, nao verificados ou extremos reduzem
-            a confianca. Em CSV simples, o score pode vir pronto ou ser estimado pelo volume de avaliacoes.
-          </p>
-        </article>
-      </section>
-
-      <section className="panel glossary-panel">
-        <div>
-          <p className="section-kicker">Glossario</p>
-          <h2>Termos do painel, sem linguagem de especialista</h2>
-        </div>
-        <div className="glossary-grid">
-          <GlossaryTerm term="Scraping" explanation="copiar dados automaticamente de paginas de um site; pode quebrar, ser bloqueado ou violar termos" />
-          <GlossaryTerm term="Crawler" explanation="programa que navega por paginas para encontrar ou coletar informacoes" />
-          <GlossaryTerm term="API" explanation="acesso oficial que um servico oferece para outros sistemas usarem seus dados" />
-          <GlossaryTerm term="Score" explanation="pontuacao calculada; neste app, junta nota, preco, reviews e confianca" />
-          <GlossaryTerm term="Auditar" explanation="olhar manualmente antes de decidir, porque existe algum sinal de risco" />
-          <GlossaryTerm term="Base autorizada" explanation="arquivo ou fonte que voce tem permissao para usar e analisar" />
-        </div>
+      <section className="details-grid">
+        <details className="details-panel">
+          <summary>Como a recomendação é calculada</summary>
+          <p>O score combina rating, preço, volume de reviews e sinais de qualidade. Ele organiza a leitura da base, sem substituir uma decisão humana.</p>
+        </details>
+        <details className="details-panel">
+          <summary>Campos aceitos no CSV</summary>
+          <p>title, author, genre, price, rating, reviews, verifiedPct e qualityScore. Também são aceitos os nomes equivalentes em português.</p>
+        </details>
       </section>
 
       {selectedReviews.length ? (
@@ -591,15 +605,6 @@ function DecisionTile({ label, value, tone }: { label: string; value: number; to
     <article className={`decision-tile decision-tile--${tone}`}>
       <span>{label}</span>
       <strong>{value}</strong>
-    </article>
-  );
-}
-
-function GlossaryTerm({ term, explanation }: { term: string; explanation: string }) {
-  return (
-    <article className="glossary-term">
-      <strong>{term}</strong>
-      <span>{explanation}</span>
     </article>
   );
 }
